@@ -220,6 +220,10 @@ class BitcoinClient::Client
     @api.request 'listsinceblock', hash
   end
 
+  # List all unspent inputs.
+  def listunspent(minconf, maxconf)
+    @api.request 'listunspent', minconf, maxconf
+  end
 
   # Move from one account in your wallet to another.
   def move(fromaccount, toaccount, amount, minconf = 1, comment = nil)
@@ -325,6 +329,8 @@ class BitcoinClient::Client
   alias list_received_by_address listreceivedbyaddress
   alias transactions listtransactions
   alias list_transactions listtransactions
+  alias list_unspent listunspent
+  alias unspent listunspent
   alias send_from sendfrom
   alias send_to_address sendtoaddress
   alias send_many sendmany
